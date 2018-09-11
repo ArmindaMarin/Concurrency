@@ -18,7 +18,7 @@ public class Main {
         System.out.println('\n' + "sorted list:" + '\n');
         printOutList();
     }
-
+// Generating a list of numbers
     public void generateNumbers(){
 
         for (int i = 0; i < listOfNumber.length; i++) {
@@ -26,7 +26,7 @@ public class Main {
             listOfNumber[i] = newNumber;
         }
     }
-
+// Sorting a list
     public void selectionSort(){
 
         int listSize = listOfNumber.length;
@@ -44,7 +44,7 @@ public class Main {
             listOfNumber[i] = tempNumber;
         }
     }
-
+// This is just to print
     public void printOutList(){
         for (int element: listOfNumber){
             System.out.println(element);
