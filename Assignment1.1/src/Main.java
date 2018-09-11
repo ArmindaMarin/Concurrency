@@ -2,8 +2,8 @@ import java.util.Random;
 
 public class Main {
     private int boundry = 8000000;
-    private int arraylenght = 10;
-    private int [] listOfNumber = new int[arraylenght];
+    private int arrayLenght = 10;
+    private int [] listOfNumber = new int[arrayLenght];
     private Random genNumers = new Random();
 
     public static void main(String[] args) {
