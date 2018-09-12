@@ -1,24 +1,24 @@
 import java.util.Random;
 
-public class Main {
+public class Assignment1_2 {
     private int boundry = 8000000;
     private int arrayLenght = 10;
     private int [] listOfNumber = new int[arrayLenght];
     private Random genNumers = new Random();
 
     public static void main(String[] args) {
-        new Main().run();
+        new Assignment1_1().run();
     }
 
     public void run(){
         generateNumbers();
         System.out.println("unsorted list:" + '\n');
         printOutList();
-        selectionSort();
+        selectionSort(0,listOfNumber.length);
         System.out.println('\n' + "sorted list:" + '\n');
         printOutList();
     }
-// Generating a list of numbers
+    // Generating a list of numbers
     public void generateNumbers(){
 
         for (int i = 0; i < listOfNumber.length; i++) {
@@ -26,12 +26,10 @@ public class Main {
             listOfNumber[i] = newNumber;
         }
     }
-// Sorting a list
-    public void selectionSort(){
+    // Sorting a list by using selection sort
+    public void selectionSort(int startOfList, int listSize){
 
-        int listSize = listOfNumber.length;
-
-        for (int i = 0; i < listSize ; i++) {
+        for (int i = startOfList; i < listSize ; i++) {
             int smallestNumber = i;
 
             for (int j = i +1; j < listSize; j++) {
@@ -44,7 +42,11 @@ public class Main {
             listOfNumber[i] = tempNumber;
         }
     }
-// This is just to print
+    // Sorting using merge sort
+    public void mergeSort(){
+        
+    }
+    // This is just to print
     public void printOutList(){
         for (int element: listOfNumber){
             System.out.println(element);
