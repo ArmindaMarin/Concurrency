@@ -1,4 +1,3 @@
-import java.time.Duration;
 import java.util.Random;
 
 public class Assignment1_1 {
@@ -6,8 +5,8 @@ public class Assignment1_1 {
     private int arrayLenght = 10;
     private int [] listOfNumber = new int[arrayLenght];
     private Random genNumers = new Random();
-    long startTime = System.currentTimeMillis();
-    long duration;
+    private long startTime = System.currentTimeMillis();
+    private long duration;
 
     public static void main(String[] args) {
         new Assignment1_1().run();

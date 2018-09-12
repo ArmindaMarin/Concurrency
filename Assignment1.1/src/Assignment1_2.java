@@ -5,6 +5,12 @@ public class Assignment1_2 {
     private int arrayLenght = 10;
     private int [] listOfNumber = new int[arrayLenght];
     private Random genNumers = new Random();
+    private long startTime = System.currentTimeMillis();
+    private long duration;
+    private int leftSubArrayStart = 0;
+    private int leftSubArraySize = listOfNumber.length/2;
+    private int rightSubArrayStart = listOfNumber.length/2 +1;
+    private int rightSubArraySize = listOfNumber.length;
 
 //    public static void main(String[] args) {
 //        new Assignment1_1().runnable();
@@ -12,11 +18,23 @@ public class Assignment1_2 {
 
     public void runnable(){
         generateNumbers();
+
         System.out.println("unsorted list:" + '\n');
         printOutList();
-        selectionSort(0,listOfNumber.length);
+
+        int[] leftUnArray = splitArray(listOfNumber,leftSubArrayStart,leftSubArraySize);
+        int[] rightUnArray = splitArray(listOfNumber,rightSubArrayStart, rightSubArraySize);
+
+        int[] leftArray = selectionSort(leftUnArray);
+        int[] rightArray = selectionSort(rightUnArray);
+
+        mergeSort(leftArray, rightArray);
+
         System.out.println('\n' + "sorted list:" + '\n');
         printOutList();
+
+        duration = (System.currentTimeMillis() - startTime);
+        System.out.println(duration + " ms)");
     }
     // Generating a list of numbers
     public void generateNumbers(){
@@ -26,14 +44,23 @@ public class Assignment1_2 {
             listOfNumber[i] = newNumber;
         }
     }
-    // Sorting a list by using selection sort
-    public int[] selectionSort(int startOfList, int listSize){
-        int [] subArray = listOfNumber;
 
-        for (int i = startOfList; i < listSize ; i++) {
+    public int [] splitArray(int[] startingArray,int startOfList, int listSize){
+        int[] subArray = new int[listSize];
+
+        for (int i = startOfList; i < listSize; i++) {
+            subArray[i] = startingArray[i];
+        }
+
+        return subArray;
+    }
+    // Sorting a list by using selection sort
+    public int[] selectionSort(int[] unSortedArray){
+
+        for (int i = 0; i < unSortedArray.length ; i++) {
             int smallestNumber = i;
 
-            for (int j = i +1; j < listSize; j++) {
+            for (int j = i +1; j < unSortedArray.length; j++) {
                 if(listOfNumber[j] < listOfNumber[smallestNumber]){
                     smallestNumber = j;
                 }
@@ -43,26 +70,15 @@ public class Assignment1_2 {
             listOfNumber[i] = tempNumber;
         }
 
-        return subArray;
+        return unSortedArray;
     }
     // Sorting using merge sort
-    public void mergeSort(){
-//            /* Create temp arrays */
-//            int L[] = new int [n1];
-//            int R[] = new int [n2];
-//
-//            /*Copy data to temp arrays*/
-//            for (int i=0; i<n1; ++i)
-//                L[i] = arr[l + i];
-//            for (int j=0; j<n2; ++j)
-//                R[j] = arr[m + 1+ j];
-//
-//
-//            /* Merge the temp arrays */
-//
-//            // Initial indexes of first and second subarrays
-//            int i = 0, j = 0;
-//
+    public void mergeSort(int[] leftList, int[] rightList){
+
+        int leftStart = 0, rightStart = 0;
+
+        
+
 //            // Initial index of merged subarry array
 //            int k = l;
 //            while (i < n1 && j < n2)
@@ -95,7 +111,6 @@ public class Assignment1_2 {
 //                j++;
 //                k++;
 //            }
-//        }
     }
     // This is just to print
     public void printOutList(){
