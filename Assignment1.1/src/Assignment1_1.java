@@ -1,3 +1,4 @@
+import java.time.Duration;
 import java.util.Random;
 
 public class Assignment1_1 {
@@ -5,18 +6,23 @@ public class Assignment1_1 {
     private int arrayLenght = 10;
     private int [] listOfNumber = new int[arrayLenght];
     private Random genNumers = new Random();
+    long startTime = System.currentTimeMillis();
+    long duration;
 
     public static void main(String[] args) {
         new Assignment1_1().run();
     }
 
-    public void run(){
+    private void run(){
         generateNumbers();
         System.out.println("unsorted list:" + '\n');
         printOutList();
         selectionSort(0,listOfNumber.length);
         System.out.println('\n' + "sorted list:" + '\n');
         printOutList();
+
+        duration = (System.currentTimeMillis() - startTime);
+        System.out.println(duration + " ms)");
     }
 // Generating a list of numbers
     public void generateNumbers(){

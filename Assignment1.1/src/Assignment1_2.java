@@ -6,11 +6,11 @@ public class Assignment1_2 {
     private int [] listOfNumber = new int[arrayLenght];
     private Random genNumers = new Random();
 
-    public static void main(String[] args) {
-        new Assignment1_1().run();
-    }
+//    public static void main(String[] args) {
+//        new Assignment1_1().runnable();
+//    }
 
-    public void run(){
+    public void runnable(){
         generateNumbers();
         System.out.println("unsorted list:" + '\n');
         printOutList();
@@ -27,7 +27,8 @@ public class Assignment1_2 {
         }
     }
     // Sorting a list by using selection sort
-    public void selectionSort(int startOfList, int listSize){
+    public int[] selectionSort(int startOfList, int listSize){
+        int [] subArray = listOfNumber;
 
         for (int i = startOfList; i < listSize ; i++) {
             int smallestNumber = i;
@@ -41,10 +42,60 @@ public class Assignment1_2 {
             listOfNumber[smallestNumber] = listOfNumber[i];
             listOfNumber[i] = tempNumber;
         }
+
+        return subArray;
     }
     // Sorting using merge sort
     public void mergeSort(){
-        
+//            /* Create temp arrays */
+//            int L[] = new int [n1];
+//            int R[] = new int [n2];
+//
+//            /*Copy data to temp arrays*/
+//            for (int i=0; i<n1; ++i)
+//                L[i] = arr[l + i];
+//            for (int j=0; j<n2; ++j)
+//                R[j] = arr[m + 1+ j];
+//
+//
+//            /* Merge the temp arrays */
+//
+//            // Initial indexes of first and second subarrays
+//            int i = 0, j = 0;
+//
+//            // Initial index of merged subarry array
+//            int k = l;
+//            while (i < n1 && j < n2)
+//            {
+//                if (L[i] <= R[j])
+//                {
+//                    arr[k] = L[i];
+//                    i++;
+//                }
+//                else
+//                {
+//                    arr[k] = R[j];
+//                    j++;
+//                }
+//                k++;
+//            }
+//
+//            /* Copy remaining elements of L[] if any */
+//            while (i < n1)
+//            {
+//                arr[k] = L[i];
+//                i++;
+//                k++;
+//            }
+//
+//            /* Copy remaining elements of R[] if any */
+//            while (j < n2)
+//            {
+//                arr[k] = R[j];
+//                j++;
+//                k++;
+//            }
+//        }
     }
     // This is just to print
     public void printOutList(){
@@ -52,4 +103,5 @@ public class Assignment1_2 {
             System.out.println(element);
         }
     }
-}
+
+    }
