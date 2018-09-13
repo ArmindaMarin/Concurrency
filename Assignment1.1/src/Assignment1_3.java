@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Assignment1_2 {
+public class Assignment1_3 {
     private int boundry = 100;
     private int arrayLenght = 10;
     private int[] mainArray = new int[arrayLenght];
@@ -13,35 +13,24 @@ public class Assignment1_2 {
     private int rightSubArraySize = mainArray.length - leftSubArraySize;
     private int[] leftArray;
     private int[] rightArray;
+    private int threshold = 2;
 
     public static void main(String[] args) {
-
-        new Assignment1_2().run();
-
+        new Assignment1_3().run();
     }
 
     private void run() {
 
-        generateNumbers(mainArray,boundry,genNumers);
+        generateNumbers(mainArray, boundry, genNumers);
 
         System.out.println("unsorted list:" + '\n');
         printOutList(mainArray);
 
-        Thread t1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                int[] leftUnArray = splitArray(mainArray, leftSubArrayStart, leftSubArraySize);
-                leftArray = selectionSort(leftUnArray);
-            }
-        });
+        int[] leftUnArray = splitArray(mainArray, leftSubArrayStart, leftSubArraySize);
+        int[] rightUnArray = splitArray(mainArray, rightSubArrayStart, rightSubArraySize);
 
-        Thread t2 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                int[] rightUnArray = splitArray(mainArray, rightSubArrayStart, rightSubArraySize);
-                rightArray = selectionSort(rightUnArray);
-            }
-        });
+        Thread t1 = addThread(threshold, leftUnArray);
+        Thread t2 = addThread(threshold, rightUnArray);
 
         t1.start();
         t2.start();
@@ -57,7 +46,38 @@ public class Assignment1_2 {
 
             duration = (System.currentTimeMillis() - startTime);
             System.out.println(duration + " ms)");
-        } catch (InterruptedException e) {}
+        } catch (InterruptedException e) {
+        }
+    }
+
+    private Thread addThread(int trashHold, int[] unArray) {
+
+        int[] sortedArray = unArray;
+        int subBoundry = sortedArray.length/2;
+        int[]leftSortedArray = splitArray(sortedArray,0,subBoundry);
+        int[] rightSortedArray = splitArray(sortedArray,subBoundry + 1,sortedArray.length);
+
+        if (unArray.length > trashHold) {
+            addThread(trashHold, sortedArray);
+        } else {
+            Thread t1 = new Thread(new Runnable() {
+
+                @Override
+                public void run() {
+                    selectionSort(sortedArray);
+                    System.out.println("A tread was made");
+                }
+            });
+
+            t1.start();
+            try {
+                t1.join();
+
+                mergeSort(leftSortedArray, rightSortedArray);
+            } catch (InterruptedException e) { }
+            return t1;
+        }
+        return null;
     }
 
     // Generating a list of numbers
