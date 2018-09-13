@@ -3,7 +3,7 @@ import java.util.Random;
 public class Assignment1_1 {
     private int boundry = 8000000;
     private int arrayLenght = 10;
-    private int [] listOfNumber = new int[arrayLenght];
+    private int [] mainArray = new int[arrayLenght];
     private Random genNumers = new Random();
     private long startTime = System.currentTimeMillis();
     private long duration;
@@ -16,7 +16,7 @@ public class Assignment1_1 {
         generateNumbers();
         System.out.println("unsorted list:" + '\n');
         printOutList();
-        selectionSort(0,listOfNumber.length);
+        selectionSort(mainArray);
         System.out.println('\n' + "sorted list:" + '\n');
         printOutList();
 
@@ -26,30 +26,32 @@ public class Assignment1_1 {
 // Generating a list of numbers
     public void generateNumbers(){
 
-        for (int i = 0; i < listOfNumber.length; i++) {
+        for (int i = 0; i < mainArray.length; i++) {
             int newNumber = genNumers.nextInt(boundry) +1;
-            listOfNumber[i] = newNumber;
+            mainArray[i] = newNumber;
         }
     }
 // Sorting a list by using selection sort
-    public void selectionSort(int startOfList, int listSize){
+public int[] selectionSort(int[] unSortedArray) {
 
-        for (int i = startOfList; i < listSize ; i++) {
-            int smallestNumber = i;
+    for (int i = 0; i < unSortedArray.length; i++) {
+        int smallestNumber = i;
 
-            for (int j = i +1; j < listSize; j++) {
-                if(listOfNumber[j] < listOfNumber[smallestNumber]){
-                    smallestNumber = j;
-                }
+        for (int j = i + 1; j < unSortedArray.length; j++) {
+            if (unSortedArray[j] < unSortedArray[smallestNumber]) {
+                smallestNumber = j;
             }
-            int tempNumber = listOfNumber[smallestNumber];
-            listOfNumber[smallestNumber] = listOfNumber[i];
-            listOfNumber[i] = tempNumber;
         }
+        int tempNumber = unSortedArray[smallestNumber];
+        unSortedArray[smallestNumber] = unSortedArray[i];
+        unSortedArray[i] = tempNumber;
     }
+
+    return unSortedArray;
+}
 // This is just to print
     public void printOutList(){
-        for (int element: listOfNumber){
+        for (int element: mainArray){
             System.out.println(element);
         }
     }

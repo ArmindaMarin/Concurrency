@@ -1,64 +1,63 @@
 import java.util.Random;
 
 public class Assignment1_2 {
-    private int boundry = 8000000;
+    private int boundry = 100;
     private int arrayLenght = 10;
-    private int[] mainList = new int[arrayLenght];
+    private int[] mainArray = new int[arrayLenght];
     private Random genNumers = new Random();
     private long startTime = System.currentTimeMillis();
     private long duration;
     private int leftSubArrayStart = 0;
-    private int leftSubArraySize = mainList.length / 2;
+    private int leftSubArraySize = mainArray.length / 2;
     private int rightSubArrayStart = leftSubArraySize + 1;
-    private int rightSubArraySize = mainList.length - leftSubArraySize;
+    private int rightSubArraySize = mainArray.length - leftSubArraySize;
+    private int[] leftArray;
+    private int[] rightArray;
 
     public static void main(String[] args) {
 
         new Assignment1_2().run();
 
-//        Thread t1 = new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//            }
-//        });
-//
-//        Thread t2 = new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//            }
-//        });
-//
-//        t1.start();
-//        t2.start();
-        
-//        try {
-//            t1.join();
-//            t2.join();
-//        } catch (InterruptedException e) {}
-//        System.out.println(c.getValue());
     }
 
     public void run() {
-        generateNumbers(mainList,boundry,genNumers);
+
+        generateNumbers(mainArray,boundry,genNumers);
 
         System.out.println("unsorted list:" + '\n');
-        printOutList(mainList);
+        printOutList(mainArray);
 
-        int[] leftUnArray = splitArray(mainList, leftSubArrayStart, leftSubArraySize);
-        int[] rightUnArray = splitArray(mainList, rightSubArrayStart, rightSubArraySize);
+        Thread t1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int[] leftUnArray = splitArray(mainArray, leftSubArrayStart, leftSubArraySize);
+                leftArray = selectionSort(leftUnArray);
+            }
+        });
 
-        int[] leftArray = selectionSort(leftUnArray);
-        int[] rightArray = selectionSort(rightUnArray);
+        Thread t2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int[] rightUnArray = splitArray(mainArray, rightSubArrayStart, rightSubArraySize);
+                rightArray = selectionSort(rightUnArray);
+            }
+        });
 
-        mergeSort(leftArray, rightArray);
+        t1.start();
+        t2.start();
 
-        System.out.println('\n' + "sorted list:" + '\n');
-        printOutList(mainList);
+        try {
+            t1.join();
+            t2.join();
 
-        duration = (System.currentTimeMillis() - startTime);
-        System.out.println(duration + " ms)");
+            mergeSort(leftArray, rightArray);
+
+            System.out.println('\n' + "sorted list:" + '\n');
+            printOutList(mainArray);
+
+            duration = (System.currentTimeMillis() - startTime);
+            System.out.println(duration + " ms)");
+        } catch (InterruptedException e) {}
     }
 
     // Generating a list of numbers
@@ -122,23 +121,23 @@ public class Assignment1_2 {
         while (leftStart < leftSubArraySize && rightStart < rightSubArraySize) {
 
             if (leftList[leftStart] <= rightList[rightStart]) {
-                mainList[index] = leftList[leftStart];
+                mainArray[index] = leftList[leftStart];
                 leftStart += 1;
             } else {
-                mainList[index] = rightList[rightStart];
+                mainArray[index] = rightList[rightStart];
                 rightStart += 1;
             }
             index += 1;
         }
 
         while (leftStart < leftSubArraySize) {
-            mainList[index] = leftList[leftStart];
+            mainArray[index] = leftList[leftStart];
             leftStart += 1;
             index += 1;
         }
 
         while (rightStart < rightSubArraySize) {
-            mainList[index] = rightList[rightStart];
+            mainArray[index] = rightList[rightStart];
             rightStart += 1;
             index += 1;
         }
