@@ -50,22 +50,21 @@ public class Assignment1_3 {
         }
     }
 
-    private Thread addThread(int trashHold, int[] unArray) {
+    private Thread addThread(int treshold, int[] unArray) {
 
         int[] sortedArray = unArray;
         int subBoundry = sortedArray.length/2;
         int[]leftSortedArray = splitArray(sortedArray,0,subBoundry);
         int[] rightSortedArray = splitArray(sortedArray,subBoundry + 1,sortedArray.length);
 
-        if (unArray.length > trashHold) {
-            addThread(trashHold, sortedArray);
+        if (unArray.length > treshold) {
+            addThread(treshold, sortedArray);
         } else {
             Thread t1 = new Thread(new Runnable() {
 
                 @Override
                 public void run() {
                     selectionSort(sortedArray);
-                    System.out.println("A tread was made");
                 }
             });
 
