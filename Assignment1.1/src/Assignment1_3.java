@@ -2,8 +2,8 @@ import java.util.Random;
 
 public class Assignment1_3 {
     private int boundry = 100;
-    private int arrayLenght = 10000;
-    private int threshold = 500;
+    private int arrayLenght = 100;
+    private int threshold = 50;
 
     private int[] mainArray = new int[arrayLenght];
 
@@ -11,14 +11,14 @@ public class Assignment1_3 {
     private long startTime = System.currentTimeMillis();
     private long duration;
 
-    private int leftSubArraySize = mainArray.length / 2;
-    private int rightSubArraySize = mainArray.length - leftSubArraySize;
+    private int leftArraySize = mainArray.length / 2;
+    private int rightArraySize = mainArray.length - leftArraySize;
 
-    private int leftSubArrayStart = 0;
-    private int rightSubArrayStart = mainArray.length / 2 + 1;
+    private int leftArrayStart = 0;
+    private int rightArrayStart = mainArray.length / 2 + 1;
 
-    private int[] leftArray = splitArray(mainArray,leftSubArrayStart,leftSubArraySize);
-    private int[] rightArray = splitArray(mainArray,rightSubArrayStart,rightSubArraySize);
+    private int[] leftArray = new int[leftArraySize];
+    private int[] rightArray = new int[rightArraySize];
 
     public static void main(String[] args) {
         new Assignment1_3().run();
@@ -28,10 +28,15 @@ public class Assignment1_3 {
 
         generateNumbers(mainArray, boundry, genNumers);
 
+        leftArray = splitArray(mainArray, leftArrayStart, leftArraySize);
+        rightArray = splitArray(mainArray, rightArrayStart, rightArraySize);
+
+
         System.out.println("unsorted list:" + '\n');
         printOutList(mainArray);
 
-        doSomeThing(threshold,leftArray, leftSubArrayStart,leftSubArraySize);
+        leftArray = addThread(threshold, leftArray, leftArraySize);
+        rightArray = addThread(threshold, rightArray, rightArraySize);
 
         mergeSort(leftArray, rightArray, this.mainArray, leftArray.length, rightArray.length);
 
@@ -44,17 +49,40 @@ public class Assignment1_3 {
 
     private class NewThread extends Thread {
         int[] sortedArray;
-        int treshold;
         int startOfList;
         int listSize;
+        int threshold;
 
-        public NewThread(int[] sortedArray, int treshhold, int startOfList, int listSize) {
+        public NewThread( int threshold, int[] sortedArray, int listSize) {
             this.sortedArray = sortedArray;
-            this.treshold = treshhold;
+            this.threshold = threshold;
+            this.listSize = listSize;
         }
 
         public void run() {
-            sortedArray = selectionSort(splitArray(sortedArray,startOfList, listSize));
+            doSomeThing(threshold,sortedArray,startOfList,listSize);
+            sortedArray = selectionSort(splitArray(sortedArray, startOfList, listSize));
+        }
+
+        private void doSomeThing(int threshold, int[] array, int arrayStart, int arraySize) {
+
+            int[] newArray = array;
+            int newLeftStart = 0;
+            int newLeftSize = newArray.length/2;
+            int newRightStart = newArray.length/2 +1;
+            int newRightSize = newArray.length;
+
+
+            int[] left = new int[newLeftSize];
+            int[] right = new int [newRightSize];
+
+            if (newArray.length > threshold) {
+                left = splitArray(newArray,newLeftStart,newLeftSize);
+                right = splitArray(newArray,newRightStart,newRightSize);
+
+                addThread(threshold, left,left.length);
+                addThread(threshold, right, right.length);
+            }
         }
 
         public int[] getSortedArray() {
@@ -62,24 +90,15 @@ public class Assignment1_3 {
         }
     }
 
-    private void doSomeThing(int threshold, int[] array,int arrayStart,int arraySize){
+    private int[] addThread( int threshold, int[] unArray, int listSize) {
 
-        int[] newArray = array;
-
-        while(threshold < newArray.length){
-            addThread(threshold,array, arrayStart,arraySize);
-        }
-    }
-
-    private int[] addThread(int treshold, int[] unArray, int startOfList, int listSize) {
-
-        NewThread t1 = new NewThread(unArray, treshold, startOfList, listSize);
-
+        NewThread t1 = new NewThread(threshold, unArray, listSize);
         t1.start();
 
         try {
             t1.join();
-        } catch (InterruptedException e) { }
+        } catch (InterruptedException e) {
+        }
 
         unArray = t1.getSortedArray();
 
