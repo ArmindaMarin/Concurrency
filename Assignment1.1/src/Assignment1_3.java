@@ -66,9 +66,6 @@ public class Assignment1_3 {
         System.out.println("unsorted list:" + '\n');
         printOutList(mainArray);
 
-        leftArray = splitArray(mainArray, leftSubArrayStart, leftSubArraySize);
-        rightArray = splitArray(mainArray, rightSubArrayStart, rightSubArraySize);
-
 //        Thread thread1 = addThread(threshold, leftUnArray);
 //        Thread thread2 = addThread(threshold, rightUnArray);
 //
@@ -89,8 +86,8 @@ public class Assignment1_3 {
 //        } catch (InterruptedException e) {
 //        }
 
-        addThread(threshold, leftArray);
-        addThread(threshold, rightArray);
+        leftArray = addThread(threshold, splitArray(mainArray, leftSubArrayStart, leftSubArraySize));
+        rightArray = addThread(threshold, splitArray(mainArray, rightSubArrayStart, rightSubArraySize));
 
         mergeSort(leftArray, rightArray, this.mainArray, leftArray.length, rightArray.length);
 
@@ -112,7 +109,7 @@ public class Assignment1_3 {
             mergeSort(t1.getLeftSortedArray(), t1.getRightSortedArray(), t1.getSortedArray(), t1.getLeftSortedArray().length, t1.getRightSortedArray().length);
         } catch (InterruptedException e) { }
 
-        return unArray;
+        return t1.sortedArray;
     }
 
     // Generating a list of numbers
