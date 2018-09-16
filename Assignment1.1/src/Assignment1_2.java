@@ -50,7 +50,7 @@ public class Assignment1_2 {
             t1.join();
             t2.join();
 
-            mergeSort(leftArray, rightArray);
+            mergeSort(leftArray, rightArray, mainArray,leftArray.length, rightArray.length);
 
             System.out.println('\n' + "sorted list:" + '\n');
             printOutList(mainArray);
@@ -114,7 +114,7 @@ public class Assignment1_2 {
     }
 
     // Sorting using merge sort
-    private void mergeSort(int[] leftList, int[] rightList) {
+    private void mergeSort(int[] leftList, int[] rightList, int[] mainArray, int leftSubArraySize, int rightSubArraySize) {
 
         int leftStart = 0, rightStart = 0, index = 0;
 

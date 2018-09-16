@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Assignment1_3 {
     private int boundry = 100;
-    private int arrayLenght = 10;
+    private int arrayLenght = 10000;
     private int[] mainArray = new int[arrayLenght];
     private Random genNumers = new Random();
     private long startTime = System.currentTimeMillis();
@@ -13,7 +13,47 @@ public class Assignment1_3 {
     private int rightSubArraySize = mainArray.length - leftSubArraySize;
     private int[] leftArray;
     private int[] rightArray;
-    private int threshold = 2;
+    private int threshold = 4;
+
+    private class NewThread extends Thread {
+        int[] sortedArray;
+        int treshold;
+        int subBoundry;
+        int[] rightSortedArray;
+        int[] leftSortedArray;
+
+        public NewThread(int[] sortedArray, int treshhold) {
+            this.sortedArray = sortedArray;
+            this.treshold = treshhold;
+        }
+
+        public void run() {
+
+            this.subBoundry = sortedArray.length / 2;
+
+            leftSortedArray = splitArray(sortedArray, 0, subBoundry);
+            rightSortedArray = splitArray(sortedArray, subBoundry + 1, sortedArray.length);
+
+            if(sortedArray.length > treshold){
+                addThread(treshold, sortedArray);
+            }else{
+                selectionSort(leftSortedArray);
+                selectionSort(rightSortedArray);
+            }
+        }
+
+        public int[] getSortedArray() {
+            return sortedArray;
+        }
+
+        public int[] getLeftSortedArray() {
+            return leftSortedArray;
+        }
+
+        public int[] getRightSortedArray() {
+            return rightSortedArray;
+        }
+    }
 
     public static void main(String[] args) {
         new Assignment1_3().run();
@@ -29,54 +69,50 @@ public class Assignment1_3 {
         int[] leftUnArray = splitArray(mainArray, leftSubArrayStart, leftSubArraySize);
         int[] rightUnArray = splitArray(mainArray, rightSubArrayStart, rightSubArraySize);
 
-        Thread t1 = addThread(threshold, leftUnArray);
-        Thread t2 = addThread(threshold, rightUnArray);
+//        Thread thread1 = addThread(threshold, leftUnArray);
+//        Thread thread2 = addThread(threshold, rightUnArray);
+//
+//        thread1.start();
+//        thread2.start();
+//
+//        try {
+//            thread1.join();
+//            thread2.join();
+//
+//            mergeSort(leftArray, rightArray);
+//
+//            System.out.println('\n' + "sorted list:" + '\n');
+//            printOutList(mainArray);
+//
+//            duration = (System.currentTimeMillis() - startTime);
+//            System.out.println(duration + " ms)");
+//        } catch (InterruptedException e) {
+//        }
+
+        leftArray = addThread(threshold, leftUnArray);
+        rightArray = addThread(threshold, rightUnArray);
+
+        mergeSort(leftArray, rightArray, this.mainArray, leftArray.length, rightArray.length);
+
+        System.out.println('\n' + "sorted list:" + '\n');
+        printOutList(mainArray);
+
+        duration = (System.currentTimeMillis() - startTime);
+        System.out.println(duration + " ms)");
+    }
+
+    private int[] addThread(int treshold, int[] unArray) {
+
+        NewThread t1 = new NewThread(unArray, treshold);
 
         t1.start();
-        t2.start();
 
         try {
             t1.join();
-            t2.join();
+            mergeSort(t1.getLeftSortedArray(), t1.getRightSortedArray(), t1.getSortedArray(), t1.getLeftSortedArray().length, t1.getRightSortedArray().length);
+        } catch (InterruptedException e) { }
 
-            mergeSort(leftArray, rightArray);
-
-            System.out.println('\n' + "sorted list:" + '\n');
-            printOutList(mainArray);
-
-            duration = (System.currentTimeMillis() - startTime);
-            System.out.println(duration + " ms)");
-        } catch (InterruptedException e) {
-        }
-    }
-
-    private Thread addThread(int treshold, int[] unArray) {
-
-        int[] sortedArray = unArray;
-        int subBoundry = sortedArray.length/2;
-        int[]leftSortedArray = splitArray(sortedArray,0,subBoundry);
-        int[] rightSortedArray = splitArray(sortedArray,subBoundry + 1,sortedArray.length);
-
-        if (unArray.length > treshold) {
-            addThread(treshold, sortedArray);
-        } else {
-            Thread t1 = new Thread(new Runnable() {
-
-                @Override
-                public void run() {
-                    selectionSort(sortedArray);
-                }
-            });
-
-            t1.start();
-            try {
-                t1.join();
-
-                mergeSort(leftSortedArray, rightSortedArray);
-            } catch (InterruptedException e) { }
-            return t1;
-        }
-        return null;
+        return unArray;
     }
 
     // Generating a list of numbers
@@ -133,7 +169,7 @@ public class Assignment1_3 {
     }
 
     // Sorting using merge sort
-    private void mergeSort(int[] leftList, int[] rightList) {
+    private void mergeSort(int[] leftList, int[] rightList, int[] mainArray, int leftSubArraySize, int rightSubArraySize) {
 
         int leftStart = 0, rightStart = 0, index = 0;
 
@@ -141,24 +177,24 @@ public class Assignment1_3 {
 
             if (leftList[leftStart] <= rightList[rightStart]) {
                 mainArray[index] = leftList[leftStart];
-                leftStart += 1;
+                leftStart++;
             } else {
                 mainArray[index] = rightList[rightStart];
-                rightStart += 1;
+                rightStart++;
             }
-            index += 1;
+            index++;
         }
 
         while (leftStart < leftSubArraySize) {
             mainArray[index] = leftList[leftStart];
-            leftStart += 1;
-            index += 1;
+            leftStart++;
+            index++;
         }
 
         while (rightStart < rightSubArraySize) {
             mainArray[index] = rightList[rightStart];
-            rightStart += 1;
-            index += 1;
+            rightStart++;
+            index++;
         }
     }
 

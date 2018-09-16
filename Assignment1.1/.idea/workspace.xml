@@ -27,11 +27,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Assignment1_2.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Assignment1_2.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Assignment1_2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="61" selection-start-line="61" selection-end-line="61" />
+            <state relative-caret-position="306">
+              <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
               <folding>
                 <element signature="method#main#0;class#Assignment1_2#0" />
                 <element signature="method#run#0;class#Assignment1_2#0" />
@@ -45,18 +45,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Assignment1_3.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Assignment1_3.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Assignment1_3.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="46" column="64" lean-forward="true" selection-start-line="46" selection-start-column="64" selection-end-line="46" selection-end-column="64" />
+            <state relative-caret-position="135">
+              <caret line="171" column="120" selection-start-line="171" selection-start-column="27" selection-end-line="171" selection-end-column="120" />
               <folding>
-                <element signature="e#2118#2119#0" expanded="true" />
-                <element signature="e#2184#2185#0" expanded="true" />
+                <element signature="e#937#938#0" expanded="true" />
+                <element signature="e#978#979#0" expanded="true" />
                 <element signature="method#generateNumbers#0;class#Assignment1_3#0" />
                 <element signature="method#splitArray#0;class#Assignment1_3#0" />
                 <element signature="method#selectionSort#0;class#Assignment1_3#0" />
-                <element signature="method#mergeSort#0;class#Assignment1_3#0" />
                 <element signature="method#printOutList#0;class#Assignment1_3#0" />
               </folding>
             </state>
@@ -77,14 +76,14 @@
       <list>
         <option value="$PROJECT_DIR$/src/SelectionSort.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/Assignment1_2.java" />
         <option value="$PROJECT_DIR$/src/Assignment1_1.java" />
         <option value="$PROJECT_DIR$/src/Assignment1_3.java" />
+        <option value="$PROJECT_DIR$/src/Assignment1_2.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="681" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="680" />
     <option name="y" value="50" />
     <option name="width" value="1080" />
     <option name="height" value="980" />
@@ -94,24 +93,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <expand>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="Assignment1.1" type="cbb8eebc:String" user="Assignment1.1" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="Assignment1.1" type="cbb8eebc:String" user="Assignment1.1" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -123,6 +106,22 @@
               <item name="Assignment1.1" type="b2602c69:ProjectViewProjectNode" />
               <item name="Assignment1.1" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="Assignment1.1" type="cbb8eebc:String" user="Assignment1.1" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="Assignment1.1" type="cbb8eebc:String" user="Assignment1.1" />
+              <item name="src" type="cbb8eebc:String" user="src" />
             </path>
           </expand>
           <select />
@@ -145,7 +144,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Assignment1_3">
+  <component name="RunManager" selected="Application.Assignment1_2">
     <configuration name="Assignment1_1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Assignment1_1" />
       <module name="CiobuMarinAssignment1" />
@@ -209,8 +208,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Assignment1_3" />
         <item itemvalue="Application.Assignment1_2" />
+        <item itemvalue="Application.Assignment1_3" />
         <item itemvalue="Application.Assignment1_1" />
       </list>
     </recent_temporary>
@@ -234,18 +233,18 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32905984" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32763532" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32763532" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12147651" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12281879" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -284,6 +283,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Assignment1_2.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="52" column="43" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="43" />
+          <folding>
+            <element signature="method#main#0;class#Assignment1_2#0" />
+            <element signature="method#run#0;class#Assignment1_2#0" />
+            <element signature="method#generateNumbers#0;class#Assignment1_2#0" />
+            <element signature="method#splitArray#0;class#Assignment1_2#0" />
+            <element signature="method#selectionSort#0;class#Assignment1_2#0" />
+            <element signature="method#mergeSort#0;class#Assignment1_2#0" />
+            <element signature="method#printOutList#0;class#Assignment1_2#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Assignment1_3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="11" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="11" />
+          <folding>
+            <element signature="e#937#938#0" expanded="true" />
+            <element signature="e#978#979#0" expanded="true" />
+            <element signature="method#generateNumbers#0;class#Assignment1_3#0" />
+            <element signature="method#splitArray#0;class#Assignment1_3#0" />
+            <element signature="method#selectionSort#0;class#Assignment1_3#0" />
+            <element signature="method#printOutList#0;class#Assignment1_3#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Assignment1_1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="method#run#0;class#Assignment1_1#0" />
+            <element signature="method#generateNumbers#0;class#Assignment1_1#0" />
+            <element signature="method#selectionSort#0;class#Assignment1_1#0" />
+            <element signature="method#printOutList#0;class#Assignment1_1#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Assignment1_2.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1037">
           <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
           <folding>
@@ -303,12 +346,11 @@
         <state relative-caret-position="493">
           <caret line="31" column="54" lean-forward="true" selection-start-line="31" selection-start-column="54" selection-end-line="31" selection-end-column="54" />
           <folding>
-            <element signature="e#2118#2119#0" expanded="true" />
-            <element signature="e#2184#2185#0" expanded="true" />
+            <element signature="e#937#938#0" expanded="true" />
+            <element signature="e#978#979#0" expanded="true" />
             <element signature="method#generateNumbers#0;class#Assignment1_3#0" />
             <element signature="method#splitArray#0;class#Assignment1_3#0" />
             <element signature="method#selectionSort#0;class#Assignment1_3#0" />
-            <element signature="method#mergeSort#0;class#Assignment1_3#0" />
             <element signature="method#printOutList#0;class#Assignment1_3#0" />
           </folding>
         </state>
@@ -522,10 +564,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Assignment1_3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="171" column="120" selection-start-line="171" selection-start-column="27" selection-end-line="171" selection-end-column="120" />
+          <folding>
+            <element signature="e#937#938#0" expanded="true" />
+            <element signature="e#978#979#0" expanded="true" />
+            <element signature="method#generateNumbers#0;class#Assignment1_3#0" />
+            <element signature="method#splitArray#0;class#Assignment1_3#0" />
+            <element signature="method#selectionSort#0;class#Assignment1_3#0" />
+            <element signature="method#printOutList#0;class#Assignment1_3#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Assignment1_2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="61" selection-start-line="61" selection-end-line="61" />
+        <state relative-caret-position="306">
+          <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
           <folding>
             <element signature="method#main#0;class#Assignment1_2#0" />
             <element signature="method#run#0;class#Assignment1_2#0" />
@@ -534,22 +591,6 @@
             <element signature="method#selectionSort#0;class#Assignment1_2#0" />
             <element signature="method#mergeSort#0;class#Assignment1_2#0" />
             <element signature="method#printOutList#0;class#Assignment1_2#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Assignment1_3.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="46" column="64" lean-forward="true" selection-start-line="46" selection-start-column="64" selection-end-line="46" selection-end-column="64" />
-          <folding>
-            <element signature="e#2118#2119#0" expanded="true" />
-            <element signature="e#2184#2185#0" expanded="true" />
-            <element signature="method#generateNumbers#0;class#Assignment1_3#0" />
-            <element signature="method#splitArray#0;class#Assignment1_3#0" />
-            <element signature="method#selectionSort#0;class#Assignment1_3#0" />
-            <element signature="method#mergeSort#0;class#Assignment1_3#0" />
-            <element signature="method#printOutList#0;class#Assignment1_3#0" />
           </folding>
         </state>
       </provider>
