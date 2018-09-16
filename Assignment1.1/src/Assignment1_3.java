@@ -66,8 +66,8 @@ public class Assignment1_3 {
         System.out.println("unsorted list:" + '\n');
         printOutList(mainArray);
 
-        int[] leftUnArray = splitArray(mainArray, leftSubArrayStart, leftSubArraySize);
-        int[] rightUnArray = splitArray(mainArray, rightSubArrayStart, rightSubArraySize);
+        leftArray = splitArray(mainArray, leftSubArrayStart, leftSubArraySize);
+        rightArray = splitArray(mainArray, rightSubArrayStart, rightSubArraySize);
 
 //        Thread thread1 = addThread(threshold, leftUnArray);
 //        Thread thread2 = addThread(threshold, rightUnArray);
@@ -89,8 +89,8 @@ public class Assignment1_3 {
 //        } catch (InterruptedException e) {
 //        }
 
-        leftArray = addThread(threshold, leftUnArray);
-        rightArray = addThread(threshold, rightUnArray);
+        addThread(threshold, leftArray);
+        addThread(threshold, rightArray);
 
         mergeSort(leftArray, rightArray, this.mainArray, leftArray.length, rightArray.length);
 
