@@ -11,49 +11,9 @@ public class Assignment1_3 {
     private int leftSubArraySize = mainArray.length / 2;
     private int rightSubArrayStart = leftSubArraySize + 1;
     private int rightSubArraySize = mainArray.length - leftSubArraySize;
-    private int[] leftArray;
-    private int[] rightArray;
-    private int threshold = 4;
-
-    private class NewThread extends Thread {
-        int[] sortedArray;
-        int treshold;
-        int subBoundry;
-        int[] rightSortedArray;
-        int[] leftSortedArray;
-
-        public NewThread(int[] sortedArray, int treshhold) {
-            this.sortedArray = sortedArray;
-            this.treshold = treshhold;
-        }
-
-        public void run() {
-
-            this.subBoundry = sortedArray.length / 2;
-
-            leftSortedArray = splitArray(sortedArray, 0, subBoundry);
-            rightSortedArray = splitArray(sortedArray, subBoundry + 1, sortedArray.length);
-
-            if(sortedArray.length > treshold){
-                addThread(treshold, sortedArray);
-            }else{
-                selectionSort(leftSortedArray);
-                selectionSort(rightSortedArray);
-            }
-        }
-
-        public int[] getSortedArray() {
-            return sortedArray;
-        }
-
-        public int[] getLeftSortedArray() {
-            return leftSortedArray;
-        }
-
-        public int[] getRightSortedArray() {
-            return rightSortedArray;
-        }
-    }
+    private int[] leftArray = new int[leftSubArraySize];
+    private int[] rightArray = new int [rightSubArraySize];
+    private int threshold = 500;
 
     public static void main(String[] args) {
         new Assignment1_3().run();
@@ -86,8 +46,7 @@ public class Assignment1_3 {
 //        } catch (InterruptedException e) {
 //        }
 
-        leftArray = addThread(threshold, splitArray(mainArray, leftSubArrayStart, leftSubArraySize));
-        rightArray = addThread(threshold, splitArray(mainArray, rightSubArrayStart, rightSubArraySize));
+        checkAndSplitThread(threshold, mainArray);
 
         mergeSort(leftArray, rightArray, this.mainArray, leftArray.length, rightArray.length);
 
@@ -98,6 +57,42 @@ public class Assignment1_3 {
         System.out.println(duration + " ms)");
     }
 
+    private class NewThread extends Thread {
+        int[] sortedArray;
+        int treshold;
+
+        public NewThread(int[] sortedArray, int treshhold) {
+            this.sortedArray = sortedArray;
+            this.treshold = treshhold;
+        }
+
+        public void run() {
+            selectionSort(sortedArray);
+        }
+
+        public int[] getSortedArray() {
+            return sortedArray;
+        }
+    }
+
+    private void checkAndSplitThread(int treshold, int[] unArray) {
+        int[] rightSortedArray;
+        int[] leftSortedArray;
+        int subBoundry;
+
+        while (treshold > unArray.length) {
+            subBoundry = unArray.length / 2;
+            leftSortedArray = splitArray(unArray, 0, subBoundry);
+            rightSortedArray = splitArray(unArray, subBoundry + 1, unArray.length);
+            leftSortedArray = addThread(treshold, leftSortedArray);
+            rightSortedArray = addThread(treshold, rightSortedArray);
+
+            this.leftArray = leftSortedArray;
+            this.rightArray = rightSortedArray;
+        }
+
+    }
+
     private int[] addThread(int treshold, int[] unArray) {
 
         NewThread t1 = new NewThread(unArray, treshold);
@@ -106,10 +101,12 @@ public class Assignment1_3 {
 
         try {
             t1.join();
-            mergeSort(t1.getLeftSortedArray(), t1.getRightSortedArray(), t1.getSortedArray(), t1.getLeftSortedArray().length, t1.getRightSortedArray().length);
-        } catch (InterruptedException e) { }
+        } catch (InterruptedException e) {
+        }
 
-        return t1.sortedArray;
+        unArray = t1.getSortedArray();
+
+        return unArray;
     }
 
     // Generating a list of numbers

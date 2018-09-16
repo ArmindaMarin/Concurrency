@@ -48,11 +48,15 @@
       <file leaf-file-name="Assignment1_3.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Assignment1_3.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-560">
-              <caret line="6" column="44" lean-forward="true" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
+            <state relative-caret-position="204">
+              <caret line="12" column="72" lean-forward="true" selection-start-line="12" selection-start-column="72" selection-end-line="12" selection-end-column="72" />
               <folding>
-                <element signature="class#NewThread#0;class#Assignment1_3#0" />
+                <element signature="e#937#938#0" expanded="true" />
+                <element signature="e#978#979#0" expanded="true" />
                 <element signature="e#1331#1392#0" />
+                <element signature="class#NewThread#0;class#Assignment1_3#0" />
+                <element signature="e#2354#2355#0" expanded="true" />
+                <element signature="e#2404#2405#0" expanded="true" />
                 <element signature="method#generateNumbers#0;class#Assignment1_3#0" />
                 <element signature="method#splitArray#0;class#Assignment1_3#0" />
                 <element signature="method#selectionSort#0;class#Assignment1_3#0" />
@@ -241,7 +245,7 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32763532" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32763532" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
@@ -251,7 +255,7 @@
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.26638177" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.26638177" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -265,7 +269,33 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="44" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/Assignment1_3.java</url>
+          <line>12</line>
+          <properties field="rightSubArraySize" class="Assignment1_3" />
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/Assignment1_3.java</url>
+          <line>10</line>
+          <properties field="leftSubArraySize" class="Assignment1_3" />
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/Assignment1_3.java</url>
+          <line>7</line>
+          <properties field="startTime" class="Assignment1_3" />
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/Assignment1_3.java</url>
+          <line>14</line>
+          <properties field="rightArray" class="Assignment1_3" />
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="57" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -303,8 +333,12 @@
         <state relative-caret-position="289">
           <caret line="17" column="11" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="11" />
           <folding>
-            <element signature="class#NewThread#0;class#Assignment1_3#0" />
+            <element signature="e#937#938#0" expanded="true" />
+            <element signature="e#978#979#0" expanded="true" />
             <element signature="e#1331#1392#0" />
+            <element signature="class#NewThread#0;class#Assignment1_3#0" />
+            <element signature="e#2354#2355#0" expanded="true" />
+            <element signature="e#2404#2405#0" expanded="true" />
             <element signature="method#generateNumbers#0;class#Assignment1_3#0" />
             <element signature="method#splitArray#0;class#Assignment1_3#0" />
             <element signature="method#selectionSort#0;class#Assignment1_3#0" />
@@ -348,8 +382,12 @@
         <state relative-caret-position="493">
           <caret line="31" column="54" lean-forward="true" selection-start-line="31" selection-start-column="54" selection-end-line="31" selection-end-column="54" />
           <folding>
-            <element signature="class#NewThread#0;class#Assignment1_3#0" />
+            <element signature="e#937#938#0" expanded="true" />
+            <element signature="e#978#979#0" expanded="true" />
             <element signature="e#1331#1392#0" />
+            <element signature="class#NewThread#0;class#Assignment1_3#0" />
+            <element signature="e#2354#2355#0" expanded="true" />
+            <element signature="e#2404#2405#0" expanded="true" />
             <element signature="method#generateNumbers#0;class#Assignment1_3#0" />
             <element signature="method#splitArray#0;class#Assignment1_3#0" />
             <element signature="method#selectionSort#0;class#Assignment1_3#0" />
@@ -585,18 +623,22 @@
     </entry>
     <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_171/src.zip!/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="47">
+        <state relative-caret-position="149">
           <caret line="716" selection-start-line="716" selection-end-line="716" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Assignment1_3.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-560">
-          <caret line="6" column="44" lean-forward="true" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
+        <state relative-caret-position="204">
+          <caret line="12" column="72" lean-forward="true" selection-start-line="12" selection-start-column="72" selection-end-line="12" selection-end-column="72" />
           <folding>
-            <element signature="class#NewThread#0;class#Assignment1_3#0" />
+            <element signature="e#937#938#0" expanded="true" />
+            <element signature="e#978#979#0" expanded="true" />
             <element signature="e#1331#1392#0" />
+            <element signature="class#NewThread#0;class#Assignment1_3#0" />
+            <element signature="e#2354#2355#0" expanded="true" />
+            <element signature="e#2404#2405#0" expanded="true" />
             <element signature="method#generateNumbers#0;class#Assignment1_3#0" />
             <element signature="method#splitArray#0;class#Assignment1_3#0" />
             <element signature="method#selectionSort#0;class#Assignment1_3#0" />
