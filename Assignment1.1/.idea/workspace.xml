@@ -147,7 +147,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Assignment1_1">
+  <component name="RunManager" selected="Application.Assignment1_3">
     <configuration name="Assignment1_1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Assignment1_1" />
       <module name="CiobuMarinAssignment1" />
@@ -211,9 +211,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Assignment1_3" />
         <item itemvalue="Application.Assignment1_1" />
         <item itemvalue="Application.Assignment1_2" />
-        <item itemvalue="Application.Assignment1_3" />
       </list>
     </recent_temporary>
   </component>

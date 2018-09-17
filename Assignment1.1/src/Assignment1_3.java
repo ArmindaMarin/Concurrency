@@ -10,9 +10,9 @@ public class Assignment1_3 {
         long startTime = System.currentTimeMillis();
         long duration;
 
-        int boundary = 100;
+        int boundary = 1000;
         int arrayLength = 100;
-        int threshold = 50;
+        int threshold = 500;
 
         int[] mainArray = new int[arrayLength];
 
