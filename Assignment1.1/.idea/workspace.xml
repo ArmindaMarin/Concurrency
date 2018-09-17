@@ -12,7 +12,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Assignment1_1.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Assignment1_1.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Assignment1_1.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
@@ -45,11 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Assignment1_3.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Assignment1_3.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Assignment1_3.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="136">
+              <caret line="49" column="43" selection-start-line="49" selection-start-column="43" selection-end-line="49" selection-end-column="43" />
               <folding>
                 <element signature="method#run#0;class#Assignment1_3#0" />
                 <element signature="class#NewThread#0;class#Assignment1_3#0" />
@@ -628,23 +628,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Assignment1_3.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="method#run#0;class#Assignment1_3#0" />
-            <element signature="class#NewThread#0;class#Assignment1_3#0" />
-            <element signature="method#createNewThread#0;class#Assignment1_3#0" />
-            <element signature="method#generateNumbers#0;class#Assignment1_3#0" />
-            <element signature="method#splitArray#0;class#Assignment1_3#0" />
-            <element signature="method#selectionSort#0;class#Assignment1_3#0" />
-            <element signature="method#mergeSort#0;class#Assignment1_3#0" />
-            <element signature="method#printOutList#0;class#Assignment1_3#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Assignment1_1.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -654,6 +637,23 @@
             <element signature="method#generateNumbers#0;class#Assignment1_1#0" />
             <element signature="method#selectionSort#0;class#Assignment1_1#0" />
             <element signature="method#printOutList#0;class#Assignment1_1#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Assignment1_3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="49" column="43" selection-start-line="49" selection-start-column="43" selection-end-line="49" selection-end-column="43" />
+          <folding>
+            <element signature="method#run#0;class#Assignment1_3#0" />
+            <element signature="class#NewThread#0;class#Assignment1_3#0" />
+            <element signature="method#createNewThread#0;class#Assignment1_3#0" />
+            <element signature="method#generateNumbers#0;class#Assignment1_3#0" />
+            <element signature="method#splitArray#0;class#Assignment1_3#0" />
+            <element signature="method#selectionSort#0;class#Assignment1_3#0" />
+            <element signature="method#mergeSort#0;class#Assignment1_3#0" />
+            <element signature="method#printOutList#0;class#Assignment1_3#0" />
           </folding>
         </state>
       </provider>

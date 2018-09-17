@@ -46,32 +46,34 @@ public class Assignment1_3 {
         System.out.println(duration + " ms)");
     }
 
+    // This inner class in where the arrays get sorted and divided in to more threads if needed.
     private class NewThread extends Thread {
         int[] sortedArray;
-        int[] left;
-        int[] right;
+        int[] leftPartialArray;
+        int[] rightPartialArray;
 
         int threshold;
 
+        // The constructor gets the unsorted array and split it in two, that in case more threads are needed.
         private NewThread(int threshold, int[] sortedArray) {
             this.sortedArray = sortedArray;
             this.threshold = threshold;
-            this.left = splitArray(sortedArray, 0, sortedArray.length / 2);
-            this.right = splitArray(sortedArray, sortedArray.length / 2 + 1, sortedArray.length / 2);
+            this.leftPartialArray = splitArray(sortedArray, 0, sortedArray.length / 2);
+            this.rightPartialArray = splitArray(sortedArray, sortedArray.length / 2 + 1, sortedArray.length / 2);
         }
 
         public synchronized void run() {
             addMoreThreads(threshold, sortedArray);
-            left = selectionSort(left);
-            right = selectionSort(right);
-            sortedArray = mergeSort(left, right, sortedArray, left.length, right.length);
+            leftPartialArray = selectionSort(leftPartialArray);
+            rightPartialArray = selectionSort(rightPartialArray);
+            sortedArray = mergeSort(leftPartialArray, rightPartialArray, sortedArray, leftPartialArray.length, rightPartialArray.length);
         }
 
         // This method checks if the length of provided array is longer then threshold then it creates two more threads.
         private synchronized void addMoreThreads(int threshold, int[] array) {
             if (array.length > threshold) {
-                this.left = createNewThread(threshold, left);
-                this.right = createNewThread(threshold, right);
+                this.leftPartialArray = createNewThread(threshold, leftPartialArray);
+                this.rightPartialArray = createNewThread(threshold, rightPartialArray);
             }
         }
 
