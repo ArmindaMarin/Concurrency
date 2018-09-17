@@ -1,44 +1,43 @@
 import java.util.Random;
 
 public class Assignment1_3 {
-    private int boundry = 100;
-    private int arrayLenght = 100;
-    private int threshold = 50;
-
-    private int[] mainArray = new int[arrayLenght];
-
-    private Random genNumers = new Random();
-    private long startTime = System.currentTimeMillis();
-    private long duration;
-
-    private int leftArraySize = mainArray.length / 2;
-    private int rightArraySize = mainArray.length - leftArraySize;
-
-    private int leftArrayStart = 0;
-    private int rightArrayStart = mainArray.length / 2 + 1;
-
-    private int[] leftArray = new int[leftArraySize];
-    private int[] rightArray = new int[rightArraySize];
-
     public static void main(String[] args) {
         new Assignment1_3().run();
     }
 
     private void run() {
+        Random randomNumbers = new Random();
+        long startTime = System.currentTimeMillis();
+        long duration;
 
-        generateNumbers(mainArray, boundry, genNumers);
+        int boundary = 100;
+        int arrayLength = 100;
+        int threshold = 50;
 
-        leftArray = splitArray(mainArray, leftArrayStart, leftArraySize);
-        rightArray = splitArray(mainArray, rightArrayStart, rightArraySize);
+        int[] mainArray = new int[arrayLength];
 
+        int leftArraySize = mainArray.length / 2;
+        int rightArraySize = mainArray.length - leftArraySize;
+
+        int leftArrayStart = 0;
+        int rightArrayStart = mainArray.length / 2 + 1;
+
+        int[] leftArray;
+        int[] rightArray;
+
+
+        generateNumbers(mainArray, boundary, randomNumbers);
 
         System.out.println("unsorted list:" + '\n');
         printOutList(mainArray);
 
-        leftArray = addThread(threshold, leftArray, leftArraySize);
-        rightArray = addThread(threshold, rightArray, rightArraySize);
+        leftArray = splitArray(mainArray, leftArrayStart, leftArraySize);
+        rightArray = splitArray(mainArray, rightArrayStart, rightArraySize);
 
-        mergeSort(leftArray, rightArray, this.mainArray, leftArray.length, rightArray.length);
+        leftArray = createNewThread(threshold, leftArray);
+        rightArray = createNewThread(threshold, rightArray);
+
+        mergeSort(leftArray, rightArray, mainArray, leftArray.length, rightArray.length);
 
         System.out.println('\n' + "sorted list:" + '\n');
         printOutList(mainArray);
@@ -49,50 +48,41 @@ public class Assignment1_3 {
 
     private class NewThread extends Thread {
         int[] sortedArray;
-        int startOfList;
-        int listSize;
+        int[] left;
+        int[] right;
+
         int threshold;
 
-        public NewThread( int threshold, int[] sortedArray, int listSize) {
+        private NewThread(int threshold, int[] sortedArray) {
             this.sortedArray = sortedArray;
             this.threshold = threshold;
-            this.listSize = listSize;
+            this.left = splitArray(sortedArray, 0, sortedArray.length / 2);
+            this.right = splitArray(sortedArray, sortedArray.length / 2 + 1, sortedArray.length / 2);
         }
 
-        public void run() {
-            doSomeThing(threshold,sortedArray,startOfList,listSize);
-            sortedArray = selectionSort(splitArray(sortedArray, startOfList, listSize));
+        public synchronized void run() {
+            addMoreThreads(threshold, sortedArray);
+            left = selectionSort(left);
+            right = selectionSort(right);
+            sortedArray = mergeSort(left, right, sortedArray, left.length, right.length);
         }
 
-        private void doSomeThing(int threshold, int[] array, int arrayStart, int arraySize) {
-
-            int[] newArray = array;
-            int newLeftStart = 0;
-            int newLeftSize = newArray.length/2;
-            int newRightStart = newArray.length/2 +1;
-            int newRightSize = newArray.length;
-
-
-            int[] left = new int[newLeftSize];
-            int[] right = new int [newRightSize];
-
-            if (newArray.length > threshold) {
-                left = splitArray(newArray,newLeftStart,newLeftSize);
-                right = splitArray(newArray,newRightStart,newRightSize);
-
-                addThread(threshold, left,left.length);
-                addThread(threshold, right, right.length);
+        // This method checks if the length of provided array is longer then threshold then it creates two more threads.
+        private synchronized void addMoreThreads(int threshold, int[] array) {
+            if (array.length > threshold) {
+                this.left = createNewThread(threshold, left);
+                this.right = createNewThread(threshold, right);
             }
         }
 
-        public int[] getSortedArray() {
+        private int[] getSortedArray() {
             return sortedArray;
         }
     }
 
-    private int[] addThread( int threshold, int[] unArray, int listSize) {
-
-        NewThread t1 = new NewThread(threshold, unArray, listSize);
+    // This method is just for creating a new thread and returning a sorted array.
+    private synchronized int[] createNewThread(int threshold, int[] unArray) {
+        NewThread t1 = new NewThread(threshold, unArray);
         t1.start();
 
         try {
@@ -101,45 +91,44 @@ public class Assignment1_3 {
         }
 
         unArray = t1.getSortedArray();
-
         return unArray;
     }
 
-    // Generating a list of numbers
-    private void generateNumbers(int[] array, int boundry, Random genNumers) {
-
+    // Generating a random numbers and puts them in a given array.
+    private void generateNumbers(int[] array, int boundary, Random randomNumbers) {
         for (int i = 0; i < array.length; i++) {
-            int newNumber = genNumers.nextInt(boundry) + 1;
+            int newNumber = randomNumbers.nextInt(boundary) + 1;
             array[i] = newNumber;
         }
     }
 
-    private int[] splitArray(int[] startingArray, int startOfList, int listSize) {
-        int[] subArray = new int[listSize];
-        int subIndex = 0;
-        int sizeCheck = listSize;
+    // This method will copy a part of an array and return that copied part.
+    private int[] splitArray(int[] array, int startOfArray, int sizeOfArray) {
+        int[] PartialArray = new int[sizeOfArray];
+        int index = 0;
+        int sizeCheck = sizeOfArray;
         int startingIndex = 0;
-        if (startOfList != 0) {
-            startingIndex = startOfList - 1;
+        if (startOfArray != 0) {
+            startingIndex = startOfArray - 1;
         }
 
 
-        for (int i = startOfList; i <= startingArray.length; i++) {
+        for (int i = startOfArray; i <= array.length; i++) {
 
             if (sizeCheck > 0) {
-                subArray[subIndex] = startingArray[startingIndex];
+                PartialArray[index] = array[startingIndex];
                 sizeCheck -= 1;
-                subIndex += 1;
+                index += 1;
                 startingIndex += 1;
             } else {
-                return subArray;
+                return PartialArray;
             }
         }
 
-        return subArray;
+        return PartialArray;
     }
 
-    // Sorting a list by using selection sort
+    // Sorting a list by using selection sort.
     private int[] selectionSort(int[] unSortedArray) {
 
         for (int i = 0; i < unSortedArray.length; i++) {
@@ -154,12 +143,12 @@ public class Assignment1_3 {
             unSortedArray[smallestNumber] = unSortedArray[i];
             unSortedArray[i] = tempNumber;
         }
-
+        // The array that is returned is sorted.
         return unSortedArray;
     }
 
-    // Sorting using merge sort
-    private void mergeSort(int[] leftList, int[] rightList, int[] mainArray, int leftSubArraySize, int rightSubArraySize) {
+    // Sorting two lists together.
+    private int[] mergeSort(int[] leftList, int[] rightList, int[] mainArray, int leftSubArraySize, int rightSubArraySize) {
 
         int leftStart = 0, rightStart = 0, index = 0;
 
@@ -186,9 +175,10 @@ public class Assignment1_3 {
             rightStart++;
             index++;
         }
+        return mainArray;
     }
 
-    // This is just to print
+    // This is just to print and see is all the sorting was done correctly.
     private void printOutList(int[] array) {
         for (int element : array) {
             System.out.println(element);
